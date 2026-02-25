@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" data-page-lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Простой сайт</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+
+  <link rel="alternate" hreflang="ru" href="/index.html">
+  <link rel="alternate" hreflang="en" href="/en/index.html">
+</head>
+
+<body>
+  <header>
+    <div class="header-bar">
+      <nav>
+        <a class="active" href="index.html">Главная</a>
+        <a href="pages/test1.html">Тест1</a>
+        <a href="pages/test2.html">Тест2</a>
+        <a href="pages/test3.html">Тест3</a>
+      </nav>
+
+      <!-- Language Toggle (SVG flags) -->
+      <div class="lang-toggle" id="langToggle" aria-label="Language switch">
+        <div class="toggle">
+          <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
+          <div class="thumb" aria-hidden="true"></div>
+
+          <div class="labels" aria-hidden="true">
+            <span><img src="/img/flags/ru.svg" alt="RU" width="18" height="12"></span>
+            <span><img src="/img/flags/gb.svg" alt="EN" width="18" height="12"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Language Toggle -->
+
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Добро пожаловать</h1>
+      <p>Это русская версия сайта. Переключатель языка — справа вверху.</p>
+      <div class="small">Выбор языка запоминается в браузере (localStorage) и применяется при следующих визитах.</div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 Пример сайта</footer>
+
+  <script src="scripts/lang.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-page-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple site</title>
+
+  <link rel="stylesheet" href="../styles/style.css">
+
+  <link rel="alternate" hreflang="ru" href="/index.html">
+  <link rel="alternate" hreflang="en" href="/en/index.html">
+</head>
+
+<body>
+  <header>
+    <div class="header-bar">
+      <nav>
+        <a class="active" href="index.html">Home</a>
+        <a href="pages/test1.html">Test1</a>
+        <a href="pages/test2.html">Test2</a>
+        <a href="pages/test3.html">Test3</a>
+      </nav>
+
+      <!-- Language Toggle (SVG flags) -->
+      <div class="lang-toggle" id="langToggle" aria-label="Language switch">
+        <div class="toggle">
+          <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
+          <div class="thumb" aria-hidden="true"></div>
+
+          <div class="labels" aria-hidden="true">
+            <span><img src="/img/flags/ru.svg" alt="RU" width="18" height="12"></span>
+            <span><img src="/img/flags/gb.svg" alt="EN" width="18" height="12"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Language Toggle -->
+
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Welcome</h1>
+      <p>This is the English version of the site. Use the toggle in the header.</p>
+      <div class="small">Your language choice is saved in the browser (localStorage).</div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 Example site</footer>
+
+  <script src="../scripts/lang.js"></script>
+</body>
+</html>

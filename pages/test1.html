@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru" data-page-lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест1</title>
+
+  <link rel="stylesheet" href="../styles/style.css">
+
+  <link rel="alternate" hreflang="ru" href="/pages/test1.html">
+  <link rel="alternate" hreflang="en" href="/en/pages/test1.html">
+</head>
+
+<body>
+  <header>
+    <div class="header-bar">
+      <nav>
+        <a href="../index.html">Главная</a>
+        <a class="active" href="test1.html">Тест1</a>
+        <a href="test2.html">Тест2</a>
+        <a href="test3.html">Тест3</a>
+      </nav>
+
+      <!-- Language Toggle (SVG flags) -->
+      <div class="lang-toggle" id="langToggle" aria-label="Language switch">
+        <div class="toggle">
+          <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
+          <div class="thumb" aria-hidden="true"></div>
+
+          <div class="labels" aria-hidden="true">
+            <span><img src="/img/flags/ru.svg" alt="RU" width="18" height="12"></span>
+            <span><img src="/img/flags/gb.svg" alt="EN" width="18" height="12"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Language Toggle -->
+
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Страница Тест1</h1>
+      <p>Русская версия страницы Тест1.</p>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 Пример сайта</footer>
+
+  <script src="../scripts/lang.js"></script>
+</body>
+</html>
