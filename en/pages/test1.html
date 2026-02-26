@@ -2,6 +2,17 @@
 <html lang="en" data-page-lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <meta http-equiv="Content-Security-Policy"
+  content="
+  default-src 'self';
+  script-src 'self' https://giscus.app;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src https://giscus.app https://api.github.com;
+  frame-src https://giscus.app;
+  ">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test1</title>
 
@@ -28,8 +39,8 @@
           <div class="thumb" aria-hidden="true"></div>
 
           <div class="labels" aria-hidden="true">
-            <span><img src="/img/flags/ru.svg" alt="RU" width="18" height="12"></span>
-            <span><img src="/img/flags/gb.svg" alt="EN" width="18" height="12"></span>
+            <span><img src="../../img/flags/ru.svg" alt="RU" width="18" height="12"></span>
+            <span><img src="../../img/flags/gb.svg" alt="EN" width="18" height="12"></span>
           </div>
         </div>
       </div>
