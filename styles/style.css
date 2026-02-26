@@ -249,3 +249,7 @@ main{
     justify-content: center;
   }
 }
+
+.giscus {
+  margin-top: 25px;
+}
