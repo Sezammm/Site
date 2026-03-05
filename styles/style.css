@@ -16,11 +16,20 @@
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
 
+/* ✅ ФОН СЮДА (чтобы не было горизонтальных границ при прокрутке) */
+html{
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  background-attachment: fixed; /* делает фон “единым полотном” при прокрутке */
+}
+
 body{
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, Arial, sans-serif;
-  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+
+  /* ❌ фон убрали отсюда */
+  background: transparent;
+
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -88,7 +97,7 @@ main{
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* важно для длинных страниц */
   text-align: center;
   padding: 28px 16px;
 }
@@ -110,7 +119,7 @@ main{
 }
 
 .card p{
-  margin: 0;
+  margin: 0 0 12px 0;
   font-size: 16px;
   opacity: .95;
 }
@@ -132,27 +141,21 @@ main{
   border-top: 1px solid rgba(255,255,255,0.10);
 }
 
-
-
-
-
-
 /* ===============================
-   Language Toggle Switch (Bigger flags + fixed thumb)
+   Language Toggle (iOS style) — FIXED
 =================================*/
-
 .lang-toggle{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
 }
 
 .lang-toggle .toggle{
-  /* Геометрия */
-  width: 140px;       /* было 120 */
-  height: 52px;       /* было 48 */
-  --pad: 6px;         /* внутренний отступ */
-  --thumbW: 64px;     /* ширина ползунка */
+  width: 140px;
+  height: 52px;
+
+  --pad: 6px;
+  --thumbW: 64px;
+  --slot: calc(var(--pad) + (var(--thumbW) / 2)); /* центр слота */
 
   position: relative;
   border-radius: 999px;
@@ -162,15 +165,16 @@ main{
   overflow: hidden;
 }
 
+/* кликабельная область */
 .lang-toggle button{
   all: unset;
   cursor: pointer;
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 10;
 }
 
-/* Ползунок */
+/* Белый ползунок */
 .lang-toggle .thumb{
   position: absolute;
   top: var(--pad);
@@ -181,75 +185,223 @@ main{
   background: rgba(255,255,255,0.95);
   box-shadow: 0 8px 20px rgba(0,0,0,0.30);
   transition: transform .22s ease;
-  z-index: 1;
-}
-
-/* Контейнер флагов */
-.lang-toggle .labels{
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  text-align: center;
-  pointer-events: none;
   z-index: 2;
 }
 
+/* Слой для флагов */
+.lang-toggle .labels{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* на случай если где-то остались <span> */
 .lang-toggle .labels span{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Флаги — ещё больше + светлая подложка */
-.lang-toggle img{
+/* Общий стиль флагов */
+.lang-toggle .labels img{
   width: 35px;
   height: 24px;
-  padding: 0;
-  border-radius: 1px;
-  border: none;
-
-  /* Двойная рамка + лёгкая тень */
+  display: block;
+  border-radius: 2px;
   box-shadow:
-    0 0 0 1px rgba(0,0,0,0.25),          /* внешняя тёмная */
-    0 0 0 2px rgba(255,255,255,0.75),    /* внешняя белая */
-    0 3px 10px rgba(0,0,0,0.28);
+    0 0 0 1px rgba(0,0,0,0.25),
+    0 0 0 2px rgba(255,255,255,0.65),
+    0 3px 10px rgba(0,0,0,0.22);
 }
 
-/* EN: точный сдвиг без вылезания за границу */
+/* Флаг внутри ползунка */
+.lang-toggle .flag-in{
+  position: absolute;
+  top: 50%;
+  left: var(--slot);                 /* RU: внутри слева */
+  transform: translate(-50%, -50%);  /* ВСЕГДА одинаково */
+  filter: none;
+  opacity: 1;
+  z-index: 4;
+}
+
+/* Второй флаг снаружи (приглушённый) */
+.lang-toggle .flag-out{
+  position: absolute;
+  top: 50%;
+  left: calc(100% - var(--slot));    /* RU: снаружи справа */
+  transform: translate(-50%, -50%);  /* ВСЕГДА одинаково */
+  opacity: .65;
+  filter: saturate(.9) contrast(.95);
+  z-index: 3;
+}
+
+.lang-toggle:hover .flag-out{
+  opacity: .78;
+}
+
+/* Когда выбран EN — двигаем thumb вправо */
 .lang-toggle[data-lang="en"] .thumb{
   transform: translateX(calc(140px - (var(--pad) * 2) - var(--thumbW)));
 }
 
-/* Hover */
+/* флаг слева */
+.lang-toggle .flag-ru{
+  position: absolute;
+  top: 50%;
+  left: calc(var(--pad) + (var(--thumbW) / 2));
+  transform: translate(-50%, -50%);
+}
+
+/* флаг справа */
+.lang-toggle .flag-en{
+  position: absolute;
+  top: 50%;
+  left: calc(100% - var(--pad) - (var(--thumbW) / 2));
+  transform: translate(-50%, -50%);
+}
+
 .lang-toggle .toggle:hover .thumb{
   background: #ffffff;
 }
 
+/* ===============================
+   Story (text + photo)
+   Story (modern layout)
+=================================*/
 
+.story{
+  max-width: 720px;
+  margin: 0 auto;
+}
 
+.story-block{
+  margin: 40px 0;
+}
 
+/* текст */
+.story-text{
+  text-align: left;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* фото контейнер */
+.story-photo{
+  margin: 24px auto;
+  text-align: center;
+  max-width: 520px;
+}
+
+/* ссылка */
+.story-photo a{
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.story-photo a:hover{
+  transform: scale(1.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+/* фото */
+.story-photo img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* подпись */
+.story-photo figcaption{
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: .8;
+}
 
 /* ===============================
-   Responsive
+   Lightbox
 =================================*/
-@media (max-width: 640px){
-  .header-bar{
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
+.lightbox{
+  position: fixed;
+  inset: 0;
+  width:100vw;
+  height:100dvh;
+  display:none;
+  background:rgba(0,0,0,0.80);
+  z-index:999999;
+}
 
-  nav{
-    justify-content: center;
-  }
+.lightbox.open{
+  display:grid;
+  place-items:center;
+}
 
-  .lang-toggle{
-    justify-content: center;
+.lightbox__img{
+  max-width:90vw;
+  max-height:90vh;
+  display:block;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.18);
+  cursor:zoom-out;
+
+  box-shadow:
+    0 0 50px rgba(255,255,255,0.25),
+    0 0 150px rgba(120,170,255,0.35),
+    inset 0 0 40px rgba(255,255,255,0.05),
+    0 25px 70px rgba(0,0,0,0.7);
+
+  animation: glowAppear .25s ease;
+}
+
+@keyframes glowAppear{
+  from{
+    transform: scale(.96);
+    opacity:0;
+  }
+  to{
+    transform: scale(1);
+    opacity:1;
   }
 }
 
-.giscus {
-  margin-top: 25px;
+.lightbox__hint{
+  position:fixed;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:13px;
+  opacity:.85;
+  color:#fff;
+  text-align:center;
+}
+
+.lightbox__close{
+  display:none;
+}
+
+/* ===== Scroll reveal ===== */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s ease, transform .55s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* если у человека включено "уменьшить анимации" — отключаем */
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

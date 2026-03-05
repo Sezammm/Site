@@ -2,7 +2,7 @@
 <html lang="ru" data-page-lang="ru">
 <head>
   <meta charset="UTF-8">
-  
+
   <meta http-equiv="Content-Security-Policy"
   content="
   default-src 'self';
@@ -15,6 +15,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Тест1</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
 
   <link rel="stylesheet" href="../styles/style.css">
 
@@ -32,16 +34,17 @@
         <a href="test3.html">Тест3</a>
       </nav>
 
-      <!-- Language Toggle (SVG flags) -->
+      <!-- Language Toggle -->
       <div class="lang-toggle" id="langToggle" aria-label="Language switch">
         <div class="toggle">
           <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
           <div class="thumb" aria-hidden="true"></div>
-
+                    
           <div class="labels" aria-hidden="true">
-            <span><img src="../img/flags/ru.svg" alt="RU" width="18" height="12"></span>
-            <span><img src="../img/flags/gb.svg" alt="EN" width="18" height="12"></span>
+            <img class="flag-ru"  src="../img/flags/ru.svg" alt="RU">
+            <img class="flag-en" src="../img/flags/gb.svg" alt="EN">
           </div>
+              
         </div>
       </div>
       <!-- /Language Toggle -->
@@ -51,10 +54,134 @@
 
   <main>
     <div class="card">
-      <h1>Страница Тест1</h1>
-      <p>Русская версия страницы Тест1.</p>
-	  
-	  <div style="margin-top: 30px;">
+      <h1>Тайский цирюльник</h1>
+
+      <!-- Рассказ: блоки "текст + фото", фото чередуется слева/справа -->
+      <article class="story">
+
+        <section class="story-block">
+          <figure class="story-photo left">
+            <a href="../img/story/01.jpg" data-lightbox="story" aria-label="Открыть фото 01">
+              <img src="../img/story/01.jpg" alt="Фото 01">
+            </a>
+            <figcaption>Подпись к фото 01 (необязательно)</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Абзац 1 твоего рассказа...</p>
+            <p>Абзац 2...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo right">
+            <a href="../img/story/02.jpg" data-lightbox="story" aria-label="Открыть фото 02">
+              <img src="../img/story/02.jpg" alt="Фото 02">
+            </a>
+            <figcaption>Подпись к фото 02</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 02...</p>
+            <p>Ещё абзац...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo left">
+            <a href="../img/story/03.jpg" data-lightbox="story" aria-label="Открыть фото 03">
+              <img src="../img/story/03.jpg" alt="Фото 03">
+            </a>
+            <figcaption>Подпись к фото 03</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 03...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo right">
+            <a href="../img/story/04.jpg" data-lightbox="story" aria-label="Открыть фото 04">
+              <img src="../img/story/04.jpg" alt="Фото 04">
+            </a>
+            <figcaption>Подпись к фото 04</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 04...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo left">
+            <a href="../img/story/05.jpg" data-lightbox="story" aria-label="Открыть фото 05">
+              <img src="../img/story/05.jpg" alt="Фото 05">
+            </a>
+            <figcaption>Подпись к фото 05</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 05...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo right">
+            <a href="../img/story/06.jpg" data-lightbox="story" aria-label="Открыть фото 06">
+              <img src="../img/story/06.jpg" alt="Фото 06">
+            </a>
+            <figcaption>Подпись к фото 06</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 06...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo left">
+            <a href="../img/story/07.jpg" data-lightbox="story" aria-label="Открыть фото 07">
+              <img src="../img/story/07.jpg" alt="Фото 07">
+            </a>
+            <figcaption>Подпись к фото 07</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 07...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo right">
+            <a href="../img/story/08.jpg" data-lightbox="story" aria-label="Открыть фото 08">
+              <img src="../img/story/08.jpg" alt="Фото 08">
+            </a>
+            <figcaption>Подпись к фото 08</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Текст после фото 08...</p>
+          </div>
+        </section>
+
+        <section class="story-block">
+          <figure class="story-photo left">
+            <a href="../img/story/09.jpg" data-lightbox="story" aria-label="Открыть фото 09">
+              <img src="../img/story/09.jpg" alt="Фото 09">
+            </a>
+            <figcaption>Подпись к фото 09</figcaption>
+          </figure>
+
+          <div class="story-text">
+            <p>Финальный текст...</p>
+          </div>
+        </section>
+
+      </article>
+      <!-- /Рассказ -->
+
+      <div style="margin-top: 30px;">
         <!-- Giscus -->
         <script src="https://giscus.app/client.js"
         data-repo="Sezammm/Site"
@@ -72,12 +199,20 @@
         async>
         </script>
       </div>
-	 	  
+
     </div>
   </main>
 
   <footer class="footer">© 2026 Sezam</footer>
 
+   <!-- Lightbox ВНЕ card/main -->
+   <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img class="lightbox__img" id="lightboxImg" alt="">
+    <div class="lightbox__hint">Клик по фото / фону — закрыть • Esc — закрыть</div>
+   </div>
+
   <script src="../scripts/lang.js"></script>
+  <script src="../scripts/lightbox.js"></script>
+  <script src="../scripts/reveal.js"></script>
 </body>
 </html>
