@@ -45,9 +45,9 @@
   function getFlagsBase(pathname) {
     // Где лежит текущая страница:
     // /index.html             -> img/flags/
-    // /pages/test1.html        -> ../img/flags/
+    // /pages/story.html        -> ../img/flags/
     // /en/index.html           -> ../img/flags/
-    // /en/pages/test1.html     -> ../../img/flags/
+    // /en/pages/story.html     -> ../../img/flags/
     if (pathname.startsWith("/en/pages/")) return "../../img/flags/";
     if (pathname.startsWith("/pages/")) return "../img/flags/";
     if (pathname.startsWith("/en/")) return "../img/flags/";
