@@ -96,8 +96,9 @@ nav a.active{
 main{
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* важно для длинных страниц */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
   padding: 28px 16px;
 }
@@ -404,4 +405,106 @@ main{
     transform: none;
     transition: none;
   }
+}
+
+/* ===============================
+   Download buttons
+=================================*/
+.download-list{
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.download-btn{
+  display: block;
+  padding: 14px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.20);
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+  transition: transform .18s ease, background .18s ease;
+}
+
+.download-btn:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.14);
+}
+
+.download-sub{
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: .75;
+  word-break: break-all;
+}
+
+/* ===============================
+   Copy link line
+=================================*/
+.copyline{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(22px, 2.4vw, 20px);
+  opacity: .85;
+}
+
+.copytext{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Кнопка-иконка */
+
+.copybtn{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;                  /* убираем рамку */
+  background: transparent;       /* полностью прозрачная */
+  cursor: pointer;
+  position: relative;
+  transition: background .15s ease, transform .12s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copybtn:hover{
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(4px);
+}
+
+.copybtn:active{
+  background: rgba(255,255,255,.16);
+}
+
+/* Рисуем иконку "копировать" через CSS */
+
+.copybtn::before,
+.copybtn::after{
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+}
+
+.copybtn::before{
+  transform: translate(2px, -2px);
+  opacity: .9;
+}
+
+.copybtn::after{
+  transform: translate(-2px, 2px);
+  opacity: .55;
 }
