@@ -217,29 +217,38 @@ main{
 }
 
 /* Флаг внутри ползунка */
-.lang-toggle .flag-in{
+
+.lang-toggle .flag-ru{
   position: absolute;
   top: 50%;
-  left: var(--slot);                 /* RU: внутри слева */
-  transform: translate(-50%, -50%);  /* ВСЕГДА одинаково */
-  filter: none;
-  opacity: 1;
+  left: calc(var(--pad) + (var(--thumbW) / 2));
+  transform: translate(-50%, -50%);
   z-index: 4;
 }
 
-/* Второй флаг снаружи (приглушённый) */
-.lang-toggle .flag-out{
+.lang-toggle .flag-en{
   position: absolute;
   top: 50%;
-  left: calc(100% - var(--slot));    /* RU: снаружи справа */
-  transform: translate(-50%, -50%);  /* ВСЕГДА одинаково */
+  left: calc(100% - var(--pad) - (var(--thumbW) / 2));
+  transform: translate(-50%, -50%);
   opacity: .65;
-  filter: saturate(.9) contrast(.95);
   z-index: 3;
 }
 
-.lang-toggle:hover .flag-out{
-  opacity: .78;
+.lang-toggle[data-lang="en"] .flag-ru{
+  opacity: .65;
+}
+
+.lang-toggle[data-lang="en"] .flag-en{
+  opacity: 1;
+}
+
+.lang-toggle[data-lang="ru"] .flag-ru{
+  opacity: 1;
+}
+
+.lang-toggle[data-lang="ru"] .flag-en{
+  opacity: .65;
 }
 
 /* Когда выбран EN — двигаем thumb вправо */
@@ -453,7 +462,7 @@ main{
   gap: 10px;
   width: fit-content;
   max-width: 100%;
-  font-size: clamp(22px, 2.4vw, 20px);
+  font-size: clamp(20px, 2.4vw, 28px);
   opacity: .85;
 }
 
