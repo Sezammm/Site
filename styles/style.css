@@ -732,3 +732,26 @@ main{
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* ===== Story title image ===== */
+.story-title-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 28px 0;
+}
+
+.story-title-image{
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,0.28));
+}
+
+/* Мобильная версия */
+@media (max-width: 768px){
+  .story-title-image{
+    width: min(100%, 520px);
+  }
+}
