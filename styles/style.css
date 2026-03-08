@@ -781,3 +781,37 @@ a{
 a:hover{
   color: #fff1b0;
 }
+
+/* ===== Scroll To Top Button ===== */
+#toTopBtn{
+  position: fixed;
+  right: 22px;
+  bottom: 26px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, background .2s ease;
+  z-index: 50;
+}
+
+#toTopBtn:hover{
+  background: rgba(255,255,255,0.18);
+  transform: translateY(0) scale(1.08);
+}
+
+#toTopBtn.show{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
