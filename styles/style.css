@@ -693,7 +693,13 @@ main{
 }
 
 .story-text p{
-  margin-bottom: 14px;
+  text-indent: 2em;
+  margin-bottom: 0.8em;
+  line-height: 1.8;
+}
+
+.story-text p:first-child{
+  text-indent: 0;
 }
 
 /* Мобильная адаптация */
@@ -756,4 +762,13 @@ main{
   .story-title-image{
     width: min(100%, 320px);
   }
+}
+
+a{
+  color: #ffd479;
+  text-decoration: underline;
+}
+
+a:hover{
+  color: #fff1b0;
 }
