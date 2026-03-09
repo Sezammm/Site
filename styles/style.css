@@ -16,20 +16,16 @@
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
 
-/* ✅ ФОН СЮДА (чтобы не было горизонтальных границ при прокрутке) */
 html{
   background: linear-gradient(135deg, var(--bg1), var(--bg2));
-  background-attachment: fixed; /* делает фон “единым полотном” при прокрутке */
+  background-attachment: fixed;
 }
 
 body{
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, Arial, sans-serif;
-
-  /* ❌ фон убрали отсюда */
   background: transparent;
-
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -118,7 +114,6 @@ main{
     0 10px 25px rgba(0,0,0,0.30),
     inset 0 1px 0 rgba(255,255,255,0.08);
   overflow: hidden;
-
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
@@ -152,7 +147,7 @@ main{
 }
 
 /* ===============================
-   Language Toggle (iOS style) — FIXED
+   Language Toggle
 =================================*/
 .lang-toggle{
   display: inline-flex;
@@ -162,11 +157,8 @@ main{
 .lang-toggle .toggle{
   width: 140px;
   height: 52px;
-
   --pad: 6px;
   --thumbW: 64px;
-  --slot: calc(var(--pad) + (var(--thumbW) / 2)); /* центр слота */
-
   position: relative;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.25);
@@ -175,7 +167,6 @@ main{
   overflow: hidden;
 }
 
-/* кликабельная область */
 .lang-toggle button{
   all: unset;
   cursor: pointer;
@@ -184,7 +175,6 @@ main{
   z-index: 10;
 }
 
-/* Белый ползунок */
 .lang-toggle .thumb{
   position: absolute;
   top: var(--pad);
@@ -198,7 +188,6 @@ main{
   z-index: 2;
 }
 
-/* Слой для флагов */
 .lang-toggle .labels{
   position: absolute;
   inset: 0;
@@ -206,14 +195,12 @@ main{
   z-index: 3;
 }
 
-/* на случай если где-то остались <span> */
 .lang-toggle .labels span{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Общий стиль флагов */
 .lang-toggle .labels img{
   width: 35px;
   height: 24px;
@@ -224,8 +211,6 @@ main{
     0 0 0 2px rgba(255,255,255,0.65),
     0 3px 10px rgba(0,0,0,0.22);
 }
-
-/* Флаг внутри ползунка */
 
 .lang-toggle .flag-ru{
   position: absolute;
@@ -260,7 +245,6 @@ main{
   opacity: .65;
 }
 
-/* Когда выбран EN — двигаем thumb вправо */
 .lang-toggle[data-lang="en"] .thumb{
   transform: translateX(calc(140px - (var(--pad) * 2) - var(--thumbW)));
 }
@@ -270,34 +254,49 @@ main{
 }
 
 /* ===============================
-   Story (text + photo)
-   Story (modern layout)
+   Story
 =================================*/
-
 .story{
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
 .story-block{
-  margin: 40px 0;
+  margin: 42px 0 54px;
 }
 
-/* текст */
 .story-text{
   text-align: left;
-  line-height: 1.7;
+  line-height: 1.75;
   font-size: 17px;
 }
 
-/* фото контейнер */
+.story-text p{
+  text-indent: 2em;
+  margin-bottom: 0.8em;
+  line-height: 1.8;
+}
+
+.story-text p:first-child{
+  text-indent: 0;
+}
+
 .story-photo{
-  margin: 24px auto;
+  margin: 22px auto;
   text-align: center;
   max-width: 520px;
 }
 
-/* ссылка */
+.story-photo.left{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.story-photo.right{
+  margin-left: auto;
+  margin-right: 0;
+}
+
 .story-photo a{
   display: block;
   border-radius: 14px;
@@ -305,25 +304,49 @@ main{
   border: 1px solid rgba(255,255,255,0.18);
   box-shadow: 0 10px 22px rgba(0,0,0,0.25);
   transition: transform .2s ease, box-shadow .2s ease;
+  background: rgba(255,255,255,0.04);
 }
 
 .story-photo a:hover{
-  transform: scale(1.03);
+  transform: translateY(-2px) scale(1.01);
   box-shadow: 0 18px 40px rgba(0,0,0,0.45);
 }
 
-/* фото */
 .story-photo img{
   width: 100%;
   height: auto;
   display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
-/* подпись */
 .story-photo figcaption{
   margin-top: 8px;
   font-size: 13px;
   opacity: .8;
+}
+
+.story-photo.left,
+.story-photo.right{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.story-title-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 28px 0;
+}
+
+.story-title-image{
+  display: block;
+  width: min(100%, 560px);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 /* ===============================
@@ -351,13 +374,11 @@ main{
   border-radius:14px;
   border:1px solid rgba(255,255,255,0.18);
   cursor:zoom-out;
-
   box-shadow:
     0 0 50px rgba(255,255,255,0.25),
     0 0 150px rgba(120,170,255,0.35),
     inset 0 0 40px rgba(255,255,255,0.05),
     0 25px 70px rgba(0,0,0,0.7);
-
   animation: glowAppear .25s ease;
 }
 
@@ -387,7 +408,9 @@ main{
   display:none;
 }
 
-/* ===== Scroll reveal ===== */
+/* ===============================
+   Scroll reveal
+=================================*/
 .reveal{
   opacity: 0;
   transform: translateY(18px);
@@ -398,15 +421,6 @@ main{
 .reveal.is-visible{
   opacity: 1;
   transform: translateY(0);
-}
-
-/* если у человека включено "уменьшить анимации" — отключаем */
-@media (prefers-reduced-motion: reduce){
-  .reveal{
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 /* ===============================
@@ -445,36 +459,39 @@ main{
 }
 
 /* ===============================
-   Copy link line
+   Copy line / Copy button
 =================================*/
 .copyline{
-  margin-top: 20px;
+  width: min(760px, 100%);
+  margin: 14px auto;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  width: fit-content;
-  max-width: 100%;
-  font-size: clamp(20px, 2.4vw, 28px);
-  opacity: .85;
 }
 
 .copytext{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  flex: 1;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.18);
+  color: #fff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-all;
 }
-
-/* Кнопка-иконка */
 
 .copybtn{
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  border: none;                  /* убираем рамку */
-  background: transparent;       /* полностью прозрачная */
+  border: none;
+  background: transparent;
   cursor: pointer;
   position: relative;
   transition: background .15s ease, transform .12s ease;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -488,8 +505,6 @@ main{
 .copybtn:active{
   background: rgba(255,255,255,.16);
 }
-
-/* Рисуем иконку "копировать" через CSS */
 
 .copybtn::before,
 .copybtn::after{
@@ -615,6 +630,13 @@ main{
   line-height: 1.6;
 }
 
+.download-panel code{
+  font-family: Consolas, "Courier New", monospace;
+  background: rgba(0,0,0,0.20);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
 .download-details{
   display: grid;
   gap: 8px;
@@ -639,140 +661,9 @@ main{
   transform: translateY(-1px);
 }
 
-/* ===== Story photos: optimization + mobile ===== */
-
-.story{
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.story-block{
-  margin: 42px 0 54px;
-}
-
-.story-photo{
-  margin: 22px auto;
-  text-align: center;
-  max-width: 520px;
-}
-
-.story-photo.left{
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.story-photo.right{
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.story-photo a{
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-  transition: transform .2s ease, box-shadow .2s ease;
-  background: rgba(255,255,255,0.04);
-}
-
-.story-photo a:hover{
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-}
-
-.story-photo img{
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-}
-
-.story-photo figcaption{
-  margin-top: 8px;
-  font-size: 13px;
-  opacity: .8;
-}
-
-.story-text{
-  text-align: left;
-  line-height: 1.75;
-  font-size: 17px;
-}
-
-.story-text p{
-  text-indent: 2em;
-  margin-bottom: 0.8em;
-  line-height: 1.8;
-}
-
-.story-text p:first-child{
-  text-indent: 0;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px){
-  .card{
-    padding: 24px 16px;
-  }
-
-  .story{
-    max-width: 100%;
-  }
-
-  .story-block{
-    margin: 30px 0 40px;
-  }
-
-  .story-photo,
-  .story-photo.left,
-  .story-photo.right{
-    max-width: 100%;
-    margin: 18px auto;
-  }
-
-  .story-text{
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  .story-photo figcaption{
-    font-size: 12px;
-  }
-}
-
-.story-photo.left,
-.story-photo.right{
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* ===== Story title image ===== */
-.story-title-wrap{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;
-  margin: 0 0 28px 0;
-}
-
-.story-title-image{
-   display: block;
-  width: min(100%, 560px);
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-
-/* Мобильная версия */
-@media (max-width: 768px){
-  .story-title-image{
-    width: min(100%, 320px);
-  }
-}
-
+/* ===============================
+   Links
+=================================*/
 a{
   color: #ffd479;
   text-decoration: underline;
@@ -782,7 +673,9 @@ a:hover{
   color: #fff1b0;
 }
 
-/* ===== Scroll To Top Button ===== */
+/* ===============================
+   Scroll To Top Button
+=================================*/
 #toTopBtn{
   position: fixed;
   right: 22px;
@@ -817,134 +710,58 @@ a:hover{
 }
 
 /* ===============================
-   Copy line
+   Responsive
 =================================*/
-.copyline{
-  width: min(760px, 100%);
-  margin: 14px auto;
-  display: flex;
-  align-items: center;   /* ← ВОТ ЭТО ГЛАВНОЕ (центровка, выравнивание кнопки copy) */
-  gap: 10px;
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
-.copytext{
-  flex: 1;
-  text-align: left;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(0,0,0,0.18);
-  color: #fff;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  word-break: break-all;
-}
+@media (max-width: 768px){
+  .card{
+    padding: 24px 16px;
+  }
 
-/* ===============================
-   Misc page
-=================================*/
-.misc-accordion{
-  margin-top: 26px;
-  text-align: left;
-}
+  .story{
+    max-width: 100%;
+  }
 
-.misc-note{
-  margin-top: 10px;
-  font-size: 14px;
-  opacity: .9;
-}
+  .story-block{
+    margin: 30px 0 40px;
+  }
 
-.download-item{
-  margin-bottom: 14px;
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.20);
-}
+  .story-photo,
+  .story-photo.left,
+  .story-photo.right{
+    max-width: 100%;
+    margin: 18px auto;
+  }
 
-.download-toggle{
-  width: 100%;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px;
-  text-align: left;
-}
+  .story-text{
+    font-size: 16px;
+    line-height: 1.7;
+  }
 
-.download-toggle:hover{
-  background: rgba(255,255,255,0.06);
-}
+  .story-photo figcaption{
+    font-size: 12px;
+  }
 
-.download-head{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-}
-
-.download-meta{
-  min-width: 0;
-}
-
-.download-title{
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.download-short{
-  font-size: 14px;
-  opacity: .82;
-}
-
-.download-arrow{
-  font-size: 28px;
-  line-height: 1;
-  flex-shrink: 0;
-  transition: transform .2s ease;
-}
-
-.download-panel{
-  display: none;
-  padding: 0 20px 20px;
-  text-align: left;
-}
-
-.download-item.open .download-panel{
-  display: block;
-}
-
-.download-item.open .download-arrow{
-  transform: rotate(45deg);
-}
-
-.download-panel p{
-  text-align: left;
-}
-
-.download-panel code{
-  font-family: Consolas, "Courier New", monospace;
-  background: rgba(0,0,0,0.20);
-  padding: 2px 6px;
-  border-radius: 8px;
+  .story-title-image{
+    width: min(100%, 320px);
+  }
 }
 
 @media (max-width: 700px){
   .copyline{
     flex-direction: column;
+    align-items: stretch;
   }
 
   .copybtn{
-    width: 100%;
-    min-width: 100%;
-    height: 44px;
+    align-self: flex-end;
   }
 
   .download-toggle{
@@ -952,6 +769,10 @@ a:hover{
   }
 
   .download-panel{
+    padding: 0 16px;
+  }
+
+  .download-item.open .download-panel{
     padding: 0 16px 16px;
   }
 

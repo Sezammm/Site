@@ -1,31 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".copybtn, .copybtn-square");
+  const buttons = document.querySelectorAll(".copybtn");
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", async () => {
-      let text = "";
-
       const targetId = btn.getAttribute("data-copy-target");
-      const directText = btn.getAttribute("data-copy-text");
+      if (!targetId) return;
 
-      if (directText) {
-        text = directText.trim();
-      } else if (targetId) {
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          text = targetEl.textContent.trim();
-        }
-      }
+      const el = document.getElementById(targetId);
+      if (!el) return;
 
-      if (!text) return;
+      const text = el.textContent.trim();
 
       try {
         await navigator.clipboard.writeText(text);
-        const oldBg = btn.style.background;
-        btn.style.background = "rgba(120,255,160,.25)";
-        setTimeout(() => {
-          btn.style.background = oldBg || "rgba(255,255,255,.10)";
-        }, 600);
+        btn.style.transform = "scale(0.92)";
+        setTimeout(() => btn.style.transform = "", 120);
       } catch (err) {
         console.error("Copy failed:", err);
       }
