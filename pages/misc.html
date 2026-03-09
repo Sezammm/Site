@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru" data-page-lang="ru">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta http-equiv="Content-Security-Policy"
+  content="
+  default-src 'self';
+  script-src 'self' https://giscus.app;
+  style-src 'self' 'unsafe-inline' https://giscus.app;
+  img-src 'self' data:;
+  connect-src https://giscus.app https://api.github.com;
+  frame-src https://giscus.app;
+  ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Разное</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../styles/style.css">
+
+  <link rel="alternate" hreflang="ru" href="/pages/misc.html">
+  <link rel="alternate" hreflang="en" href="/en/pages/misc.html">
+</head>
+
+<body>
+  <header>
+    <div class="header-bar">
+      <nav>
+        <a href="../index.html">Главная</a>
+        <a href="story.html">Рассказ</a>
+        <a href="download.html">Скачать</a>
+        <a class="active" href="misc.html">Разное</a>
+      </nav>
+
+      <div class="lang-toggle" id="langToggle" aria-label="Language switch">
+        <div class="toggle">
+          <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
+          <div class="thumb" aria-hidden="true"></div>
+
+          <div class="labels" aria-hidden="true">
+            <img class="flag-ru" src="../img/flags/ru.svg" alt="RU">
+            <img class="flag-en" src="../img/flags/gb.svg" alt="EN">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Разное</h1>
+      <p>Небольшие IT-подсказки, команды и полезные мелочи.</p>
+
+      <div class="downloads-accordion misc-accordion">
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Убрать пункт контекстного меню корзины</div>
+                <div class="download-short">Удаление лишнего пункта через реестр Windows</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p><strong>Шаг 1.</strong> Запусти редактор реестра: <code>regedit.exe</code></p>
+
+            <p><strong>Шаг 2.</strong> Перейди в ветку:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="ctxMenuPath">HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers</span>
+              <button class="copybtn" data-copy-target="ctxMenuPath" aria-label="Копировать путь"></button>
+            </div>
+
+            <p><strong>Шаг 3.</strong> Удали подраздел:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="ctxMenuGuid">{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}</span>
+              <button class="copybtn" data-copy-target="ctxMenuGuid" aria-label="Копировать GUID"></button>
+            </div>
+
+         </div>
+        </div>
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Отключение требования пароля при входе</div>
+                <div class="download-short">Для локальной учетной записи Windows</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p><strong>Шаг 1.</strong> Нажми <code>Win + R</code></p>
+            <p><strong>Шаг 2.</strong> Введи:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="netplwizCmd">netplwiz</span>
+              <button class="copybtn" data-copy-target="netplwizCmd" aria-label="Копировать команду"></button>
+            </div>
+
+            <p><strong>Шаг 3.</strong> Если нужная галочка недоступна, проверь ветку реестра:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="pwdLessPath">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device</span>
+              <button class="copybtn" data-copy-target="pwdLessPath" aria-label="Копировать путь"></button>
+            </div>
+
+            <p><strong>Шаг 4.</strong> Измени параметр:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="pwdLessValue">DevicePasswordLessBuildVersion = 0</span>
+              <button class="copybtn" data-copy-target="pwdLessValue" aria-label="Копировать значение"></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="small">Нажми на блок, чтобы раскрыть подсказку. Кнопка справа копирует путь или команду в буфер обмена.</div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 Sezam</footer>
+
+  <script src="../scripts/lang.js"></script>
+  <script src="../scripts/lightbox.js"></script>
+  <script src="../scripts/reveal.js"></script>
+  <script src="../scripts/downloads.js"></script>
+  <script src="../scripts/copy.js"></script>
+  <script src="../scripts/totop.js"></script>
+  
+  <button id="toTopBtn" aria-label="Наверх">▲</button>
+</body>
+</html>

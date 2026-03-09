@@ -815,3 +815,147 @@ a:hover{
   visibility: visible;
   transform: translateY(0);
 }
+
+/* ===============================
+   Copy line
+=================================*/
+.copyline{
+  width: min(760px, 100%);
+  margin: 14px auto;
+  display: flex;
+  align-items: center;   /* ← ВОТ ЭТО ГЛАВНОЕ (центровка, выравнивание кнопки copy) */
+  gap: 10px;
+}
+
+.copytext{
+  flex: 1;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.18);
+  color: #fff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+/* ===============================
+   Misc page
+=================================*/
+.misc-accordion{
+  margin-top: 26px;
+  text-align: left;
+}
+
+.misc-note{
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: .9;
+}
+
+.download-item{
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+}
+
+.download-toggle{
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.download-toggle:hover{
+  background: rgba(255,255,255,0.06);
+}
+
+.download-head{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.download-meta{
+  min-width: 0;
+}
+
+.download-title{
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.download-short{
+  font-size: 14px;
+  opacity: .82;
+}
+
+.download-arrow{
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+
+.download-panel{
+  display: none;
+  padding: 0 20px 20px;
+  text-align: left;
+}
+
+.download-item.open .download-panel{
+  display: block;
+}
+
+.download-item.open .download-arrow{
+  transform: rotate(45deg);
+}
+
+.download-panel p{
+  text-align: left;
+}
+
+.download-panel code{
+  font-family: Consolas, "Courier New", monospace;
+  background: rgba(0,0,0,0.20);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+@media (max-width: 700px){
+  .copyline{
+    flex-direction: column;
+  }
+
+  .copybtn{
+    width: 100%;
+    min-width: 100%;
+    height: 44px;
+  }
+
+  .download-toggle{
+    padding: 16px;
+  }
+
+  .download-panel{
+    padding: 0 16px 16px;
+  }
+
+  .download-title{
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-page-lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta http-equiv="Content-Security-Policy"
+  content="
+  default-src 'self';
+  script-src 'self' https://giscus.app;
+  style-src 'self' 'unsafe-inline' https://giscus.app;
+  img-src 'self' data:;
+  connect-src https://giscus.app https://api.github.com;
+  frame-src https://giscus.app;
+  ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misc</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../../styles/style.css">
+
+  <link rel="alternate" hreflang="ru" href="/pages/misc.html">
+  <link rel="alternate" hreflang="en" href="/en/pages/misc.html">
+</head>
+
+<body>
+  <header>
+    <div class="header-bar">
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="story.html">Story</a>
+        <a href="download.html">Download</a>
+        <a class="active" href="misc.html">Misc</a>
+      </nav>
+
+      <div class="lang-toggle" id="langToggle" aria-label="Language switch">
+        <div class="toggle">
+          <button type="button" id="langToggleBtn" aria-label="Toggle language"></button>
+          <div class="thumb" aria-hidden="true"></div>
+
+          <div class="labels" aria-hidden="true">
+            <img class="flag-ru" src="../../img/flags/ru.svg" alt="RU">
+            <img class="flag-en" src="../../img/flags/gb.svg" alt="EN">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Misc</h1>
+      <p>Small IT tips, commands and useful notes.</p>
+
+      <div class="downloads-accordion misc-accordion">
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Remove a Recycle Bin context menu item</div>
+                <div class="download-short">Delete an unnecessary menu entry through Windows Registry</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p><strong>Step 1.</strong> Run Registry Editor: <code>regedit.exe</code></p>
+            <p><strong>Step 2.</strong> Go to:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="ctxMenuPathEn">HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers</span>
+              <button class="copybtn" data-copy-target="ctxMenuPathEn" aria-label="Copy path"></button>
+            </div>
+
+            <p><strong>Step 3.</strong> Delete the subkey:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="ctxMenuGuidEn">{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}</span>
+              <button class="copybtn" data-copy-target="ctxMenuGuidEn" aria-label="Copy GUID"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Disable password requirement at sign-in</div>
+                <div class="download-short">For a local Windows user account</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p><strong>Step 1.</strong> Press <code>Win + R</code></p>
+            <p><strong>Step 2.</strong> Run:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="netplwizCmdEn">netplwiz</span>
+              <button class="copybtn" data-copy-target="netplwizCmdEn" aria-label="Copy command"></button>
+            </div>
+
+            <p><strong>Step 3.</strong> If the checkbox is missing, check this registry path:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="pwdLessPathEn">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device</span>
+              <button class="copybtn" data-copy-target="pwdLessPathEn" aria-label="Copy path"></button>
+            </div>
+
+            <p><strong>Step 4.</strong> Set:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="pwdLessValueEn">DevicePasswordLessBuildVersion = 0</span>
+              <button class="copybtn" data-copy-target="pwdLessValueEn" aria-label="Copy value"></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 Sezam</footer>
+
+  <script src="../../scripts/lang.js"></script>
+  <script src="../../scripts/lightbox.js"></script>
+  <script src="../../scripts/reveal.js"></script>
+  <script src="../../scripts/downloads.js"></script>
+  <script src="../../scripts/copy.js"></script>
+  <script src="../../scripts/totop.js"></script>
+  
+  <button id="toTopBtn" aria-label="to Top">▲</button>
+</body>
+</html>
