@@ -58,8 +58,8 @@
           <button class="download-toggle" type="button">
             <div class="download-head">
               <div class="download-meta">
-                <div class="download-title">Убрать пункт контекстного меню корзины</div>
-                <div class="download-short">Удаление лишнего пункта через реестр Windows</div>
+                <div class="download-title">Убрать пункт контекстного меню корзины (Win11PRO 21H2)</div>
+                <div class="download-short">Удаление лишнего пункта "закрепить в меню пуск" через реестр Windows</div>
               </div>
             </div>
             <span class="download-arrow">+</span>
@@ -85,11 +85,14 @@
          </div>
         </div>
 
+
+
+
         <div class="download-item">
           <button class="download-toggle" type="button">
             <div class="download-head">
               <div class="download-meta">
-                <div class="download-title">Отключение требования пароля при входе</div>
+                <div class="download-title">Отключение требования пароля при входе в Windows 11 PRO 21H2</div>
                 <div class="download-short">Для локальной учетной записи Windows</div>
               </div>
             </div>
@@ -112,7 +115,7 @@
               <button class="copybtn" data-copy-target="pwdLessPath" aria-label="Копировать путь"></button>
             </div>
 
-            <p><strong>Шаг 4.</strong> Измени параметр:</p>
+            <p><strong>Шаг 4.</strong> Измени параметр на:</p>
 
             <div class="copyline">
               <span class="copytext" id="pwdLessValue">DevicePasswordLessBuildVersion = 0</span>
@@ -120,6 +123,198 @@
             </div>
           </div>
         </div>
+
+
+        
+        <div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Как скрыть пользователя на экране входа в Windows 11 PRO 21H2</div>
+        <div class="download-short">Скрытие локального пользователя через реестр</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p><strong>Шаг 1.</strong> Нажми <code>Win + R</code>, введи <code>regedit</code> и нажми <code>Enter</code>.</p>
+
+    <p><strong>Шаг 2.</strong> Перейди в раздел реестра:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="hideUserWinlogonPath">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</span>
+      <button class="copybtn" data-copy-target="hideUserWinlogonPath" aria-label="Копировать путь"></button>
+    </div>
+
+    <p><strong>Шаг 3.</strong> Внутри этого раздела найди или создай подраздел:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="hideUserSubkeyPath">SpecialAccounts\UserList</span>
+      <button class="copybtn" data-copy-target="hideUserSubkeyPath" aria-label="Копировать подраздел"></button>
+    </div>
+
+    <p><strong>Шаг 4.</strong> Если папка <code>UserList</code> отсутствует:</p>
+    <p>Щёлкни правой кнопкой мыши на <code>Winlogon</code> → <code>Создать</code> → <code>Раздел</code> и назови его <code>SpecialAccounts</code>.</p>
+    <p>Затем внутри <code>SpecialAccounts</code> создай ещё один раздел с именем <code>UserList</code>.</p>
+
+    <p><strong>Шаг 5.</strong> В разделе <code>UserList</code> создай новый параметр:</p>
+    <p>Щёлкни правой кнопкой мыши справа → <code>Создать</code> → <code>Параметр DWORD (32 бита)</code>.</p>
+
+    <p><strong>Шаг 6.</strong> Назови параметр точно так же, как имя пользователя, которого хочешь скрыть. Пример:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="hideUserExampleName">SyncUser</span>
+      <button class="copybtn" data-copy-target="hideUserExampleName" aria-label="Копировать имя"></button>
+    </div>
+
+    <p><strong>Шаг 7.</strong> Убедись, что значение параметра установлено в:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="hideUserDwordValue">0</span>
+      <button class="copybtn" data-copy-target="hideUserDwordValue" aria-label="Копировать значение"></button>
+    </div>
+
+    <p><strong>Шаг 8.</strong> Закрой редактор реестра и перезагрузи компьютер.</p>
+
+    <p><strong>Как войти в скрытого пользователя:</strong></p>
+    <p>На экране входа нажми <code>Ctrl + Alt + Delete</code>, выбери <code>Другой пользователь</code>, затем введи имя скрытого пользователя и пароль.</p>
+
+    <div class="copyline">
+      <span class="copytext" id="hideUserLoginExample">SyncKIS</span>
+      <button class="copybtn" data-copy-target="hideUserLoginExample" aria-label="Копировать пример имени"></button>
+    </div>
+
+    <p><strong>Как вернуть пользователя на экран входа:</strong></p>
+    <p>Вернись в раздел <code>UserList</code>, затем либо удали параметр с именем пользователя, либо установи его значение в:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="showUserDwordValue">1</span>
+      <button class="copybtn" data-copy-target="showUserDwordValue" aria-label="Копировать значение"></button>
+    </div>
+
+    <p><strong>Примечания:</strong></p>
+    <p>Скрытие пользователя не является мерой безопасности - это только визуальное скрытие на экране входа.</p>
+    <p>Убедись, что у тебя есть доступ к другому административному аккаунту, чтобы при необходимости вернуть изменения.</p>
+  </div>
+</div>
+
+
+
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Калькулятор часовых поясов (NYC / Moscow / Ulan-Ude)</div>
+        <div class="download-short">Быстрое сравнение времени между городами</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Онлайн-калькулятор для сравнения времени между часовыми поясами.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="tzCalcLink"
+         href="https://www.timeanddate.com/worldclock/converter.html?iso=20250525T174000&p1=4826&p2=166&p3=2220"
+         target="_blank"
+         rel="noopener">
+         https://www.timeanddate.com/worldclock/converter.html?iso=20250525T174000&p1=4826&p2=166&p3=2220
+      </a>
+      <button class="copybtn" data-copy-target="tzCalcLink" aria-label="Копировать ссылку"></button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Кириллические шрифты</div>
+        <div class="download-short">Коллекция русских и кириллических шрифтов</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Большая онлайн-библиотека кириллических шрифтов для сайтов, дизайна и документов.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="cyrFontsLink"
+         href="https://fonts-online.ru/cyrillic-fonts"
+         target="_blank"
+         rel="noopener">
+         https://fonts-online.ru/cyrillic-fonts
+      </a>
+      <button class="copybtn" data-copy-target="cyrFontsLink" aria-label="Копировать ссылку"></button>
+    </div>
+  </div>
+</div>
+
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">VPN обратно</div>
+        <div class="download-short">Обратный VPN туннель в сторону РФ</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Ключи для OpenVPN.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="vpnObratnoLink"
+         href="https://vpnobratno.info"
+         target="_blank"
+         rel="noopener">
+         https://vpnobratno.info
+      </a>
+      <button class="copybtn" data-copy-target="vpnObratnoLink" aria-label="Копировать ссылку"></button>
+    </div>
+  </div>
+</div>
+
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Kaspersky Free Antivirus для Windows</div>
+        <div class="download-short">Официальная страница загрузки бесплатного антивируса Kaspersky</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Открывается и скачивается только с территории России.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="kasperskyFreeLink"
+         href="https://www.kaspersky.ru/downloads/free-antivirus"
+         target="_blank"
+         rel="noopener">
+         https://www.kaspersky.ru/downloads/free-antivirus
+      </a>
+      <button class="copybtn" data-copy-target="kasperskyFreeLink" aria-label="Копировать ссылку"></button>
+    </div>
+  </div>
+</div>
+
+
+
+
 
       </div>
 

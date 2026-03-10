@@ -620,7 +620,7 @@ main{
 }
 
 .download-item.open .download-panel{
-  max-height: 800px;
+  max-height: 3000px;
   padding: 0 18px 18px;
 }
 

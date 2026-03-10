@@ -2,7 +2,7 @@
 <html lang="en" data-page-lang="en">
 <head>
   <meta charset="UTF-8">
-
+  
   <meta http-equiv="Content-Security-Policy"
   content="
   default-src 'self';
@@ -50,7 +50,7 @@
   <main>
     <div class="card">
       <h1>Misc</h1>
-      <p>Small IT tips, commands and useful notes.</p>
+      <p>Small IT tips, commands, and useful little things.</p>
 
       <div class="downloads-accordion misc-accordion">
 
@@ -58,8 +58,8 @@
           <button class="download-toggle" type="button">
             <div class="download-head">
               <div class="download-meta">
-                <div class="download-title">Remove a Recycle Bin context menu item</div>
-                <div class="download-short">Delete an unnecessary menu entry through Windows Registry</div>
+                <div class="download-title">Remove a Recycle Bin context menu item  (Win11PRO 21H2)</div>
+                <div class="download-short">Removing the unnecessary "Pin to Start" menu item through the Windows Registry</div>
               </div>
             </div>
             <span class="download-arrow">+</span>
@@ -67,7 +67,8 @@
 
           <div class="download-panel">
             <p><strong>Step 1.</strong> Run Registry Editor: <code>regedit.exe</code></p>
-            <p><strong>Step 2.</strong> Go to:</p>
+
+            <p><strong>Step 2.</strong> Go to this key:</p>
 
             <div class="copyline">
               <span class="copytext" id="ctxMenuPathEn">HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers</span>
@@ -80,6 +81,7 @@
               <span class="copytext" id="ctxMenuGuidEn">{a2a9545d-a0c2-42b4-9708-a0b2badd77c8}</span>
               <button class="copybtn" data-copy-target="ctxMenuGuidEn" aria-label="Copy GUID"></button>
             </div>
+
           </div>
         </div>
 
@@ -87,7 +89,7 @@
           <button class="download-toggle" type="button">
             <div class="download-head">
               <div class="download-meta">
-                <div class="download-title">Disable password requirement at sign-in</div>
+                <div class="download-title">Disable password requirement at sign-in Windows 11 PRO 21H2</div>
                 <div class="download-short">For a local Windows user account</div>
               </div>
             </div>
@@ -96,21 +98,21 @@
 
           <div class="download-panel">
             <p><strong>Step 1.</strong> Press <code>Win + R</code></p>
-            <p><strong>Step 2.</strong> Run:</p>
+            <p><strong>Step 2.</strong> Type:</p>
 
             <div class="copyline">
               <span class="copytext" id="netplwizCmdEn">netplwiz</span>
               <button class="copybtn" data-copy-target="netplwizCmdEn" aria-label="Copy command"></button>
             </div>
 
-            <p><strong>Step 3.</strong> If the checkbox is missing, check this registry path:</p>
+            <p><strong>Step 3.</strong> If the checkbox is unavailable, check this registry key:</p>
 
             <div class="copyline">
               <span class="copytext" id="pwdLessPathEn">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device</span>
               <button class="copybtn" data-copy-target="pwdLessPathEn" aria-label="Copy path"></button>
             </div>
 
-            <p><strong>Step 4.</strong> Set:</p>
+            <p><strong>Step 4.</strong> Change the value to:</p>
 
             <div class="copyline">
               <span class="copytext" id="pwdLessValueEn">DevicePasswordLessBuildVersion = 0</span>
@@ -119,9 +121,194 @@
           </div>
         </div>
 
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">How to hide a user on the Windows 11 PRO 21H2 sign-in screen</div>
+                <div class="download-short">Hide a local user through the Registry</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p><strong>Step 1.</strong> Press <code>Win + R</code>, type <code>regedit</code>, and press <code>Enter</code>.</p>
+
+            <p><strong>Step 2.</strong> Go to this registry key:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="hideUserWinlogonPathEn">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</span>
+              <button class="copybtn" data-copy-target="hideUserWinlogonPathEn" aria-label="Copy path"></button>
+            </div>
+
+            <p><strong>Step 3.</strong> Inside this key, find or create the following subkey:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="hideUserSubkeyPathEn">SpecialAccounts\UserList</span>
+              <button class="copybtn" data-copy-target="hideUserSubkeyPathEn" aria-label="Copy subkey"></button>
+            </div>
+
+            <p><strong>Step 4.</strong> If the <code>UserList</code> key does not exist:</p>
+            <p>Right-click <code>Winlogon</code> → <code>New</code> → <code>Key</code> and name it <code>SpecialAccounts</code>.</p>
+            <p>Then inside <code>SpecialAccounts</code>, create another key named <code>UserList</code>.</p>
+
+            <p><strong>Step 5.</strong> In the <code>UserList</code> key, create a new value:</p>
+            <p>Right-click in the right pane → <code>New</code> → <code>DWORD (32-bit) Value</code>.</p>
+
+            <p><strong>Step 6.</strong> Name the value exactly the same as the user account you want to hide. Example:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="hideUserExampleNameEn">SyncUser</span>
+              <button class="copybtn" data-copy-target="hideUserExampleNameEn" aria-label="Copy name"></button>
+            </div>
+
+            <p><strong>Step 7.</strong> Make sure the value data is set to:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="hideUserDwordValueEn">0</span>
+              <button class="copybtn" data-copy-target="hideUserDwordValueEn" aria-label="Copy value"></button>
+            </div>
+
+            <p><strong>Step 8.</strong> Close Registry Editor and restart the computer.</p>
+
+            <p><strong>How to sign in as the hidden user:</strong></p>
+            <p>On the sign-in screen, press <code>Ctrl + Alt + Delete</code>, select <code>Other user</code>, then enter the hidden username and password.</p>
+
+            <div class="copyline">
+              <span class="copytext" id="hideUserLoginExampleEn">SyncKIS</span>
+              <button class="copybtn" data-copy-target="hideUserLoginExampleEn" aria-label="Copy example name"></button>
+            </div>
+
+            <p><strong>How to show the user again on the sign-in screen:</strong></p>
+            <p>Go back to the <code>UserList</code> key, then either delete the value with the username or set its value to:</p>
+
+            <div class="copyline">
+              <span class="copytext" id="showUserDwordValueEn">1</span>
+              <button class="copybtn" data-copy-target="showUserDwordValueEn" aria-label="Copy value"></button>
+            </div>
+
+            <p><strong>Notes:</strong></p>
+            <p>Hiding a user is not a security measure - it is only a visual trick on the sign-in screen.</p>
+            <p>Make sure you still have access to another administrator account in case you need to revert the changes.</p>
+          </div>
+        </div>
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Time Zone Calculator (NYC / Moscow / Ulan-Ude)</div>
+                <div class="download-short">Quickly compare time between cities</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p>Online calculator for comparing time between time zones.</p>
+
+            <div class="copyline">
+              <a class="copytext"
+                 id="tzCalcLinkEn"
+                 href="https://www.timeanddate.com/worldclock/converter.html?iso=20250525T174000&p1=4826&p2=166&p3=2220"
+                 target="_blank"
+                 rel="noopener">
+                 https://www.timeanddate.com/worldclock/converter.html?iso=20250525T174000&p1=4826&p2=166&p3=2220
+              </a>
+              <button class="copybtn" data-copy-target="tzCalcLinkEn" aria-label="Copy link"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-item">
+          <button class="download-toggle" type="button">
+            <div class="download-head">
+              <div class="download-meta">
+                <div class="download-title">Cyrillic Fonts</div>
+                <div class="download-short">Collection of Russian and Cyrillic fonts</div>
+              </div>
+            </div>
+            <span class="download-arrow">+</span>
+          </button>
+
+          <div class="download-panel">
+            <p>Large online library of Cyrillic fonts for websites, design, and documents.</p>
+
+            <div class="copyline">
+              <a class="copytext"
+                 id="cyrFontsLinkEn"
+                 href="https://fonts-online.ru/cyrillic-fonts"
+                 target="_blank"
+                 rel="noopener">
+                 https://fonts-online.ru/cyrillic-fonts
+              </a>
+              <button class="copybtn" data-copy-target="cyrFontsLinkEn" aria-label="Copy link"></button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">VPN Obratno</div>
+        <div class="download-short">Reverse VPN tunnel towards Russia</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>OpenVPN configuration keys.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="vpnObratnoLinkEn"
+         href="https://vpnobratno.info"
+         target="_blank"
+         rel="noopener">
+         https://vpnobratno.info
+      </a>
+      <button class="copybtn" data-copy-target="vpnObratnoLinkEn" aria-label="Copy link"></button>
+    </div>
+  </div>
+</div>
+
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Kaspersky Free Antivirus for Windows</div>
+        <div class="download-short">Official download page for the free Kaspersky antivirus</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Available for download only from within Russia.</p>
+
+    <div class="copyline">
+      <a class="copytext"
+         id="kasperskyFreeLinkEn"
+         href="https://www.kaspersky.ru/downloads/free-antivirus"
+         target="_blank"
+         rel="noopener">
+         https://www.kaspersky.ru/downloads/free-antivirus
+      </a>
+      <button class="copybtn" data-copy-target="kasperskyFreeLinkEn" aria-label="Copy link"></button>
+    </div>
+  </div>
+</div>
+
+
+
+
       </div>
 
-      <div class="small">Click the block to expand the hint. The button on the right copies the path or command to the clipboard.</div>
+      <div class="small">Click a block to expand the tip. The button on the right copies the path, command, or link to the clipboard.</div>
     </div>
   </main>
 
@@ -134,6 +321,6 @@
   <script src="../../scripts/copy.js"></script>
   <script src="../../scripts/totop.js"></script>
   
-  <button id="toTopBtn" aria-label="to Top">▲</button>
+  <button id="toTopBtn" aria-label="Back to top">▲</button>
 </body>
 </html>
