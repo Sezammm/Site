@@ -304,6 +304,41 @@
 </div>
 
 
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Fix Windows Icon Cache</div>
+        <div class="download-short">Restart Explorer and rebuild Icon Cache</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>This script restarts Windows Explorer and clears the icon cache. Useful when icons appear broken or outdated.</p>
+
+    <p><strong>CMD script:</strong></p>
+
+    <div class="copyline">
+      <span class="copytext" id="iconCacheCmdEn">
+taskkill /IM explorer.exe /F
+cd /d %userprofile%\AppData\Local
+del IconCache.db /a
+start "" explorer.exe
+      </span>
+      <button class="copybtn" data-copy-target="iconCacheCmdEn" aria-label="Copy script"></button>
+    </div>
+
+    <p><strong>How to use:</strong></p>
+    <p>1. Copy the code<br>
+       2. Paste into Notepad<br>
+       3. Save as <code>fix-icons.cmd</code><br>
+       4. Run as Administrator</p>
+  </div>
+</div>
+
+
 
 
       </div>

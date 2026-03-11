@@ -313,6 +313,40 @@
 </div>
 
 
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Исправление кэша иконок Windows</div>
+        <div class="download-short">Перезапуск проводника и очистка Icon Cache</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Скрипт перезапускает Проводник Windows и очищает кэш иконок. Полезно, если иконки отображаются неправильно.</p>
+
+    <p><strong>CMD-скрипт:</strong></p>
+
+    <div class="copyline">
+      <span class="copytext" id="iconCacheCmd">
+taskkill /IM explorer.exe /F
+cd /d %userprofile%\AppData\Local
+del IconCache.db /a
+start "" explorer.exe
+      </span>
+      <button class="copybtn" data-copy-target="iconCacheCmd" aria-label="Копировать скрипт"></button>
+    </div>
+
+    <p><strong>Как использовать:</strong></p>
+    <p>1. Скопируй код<br>
+       2. Вставь в Блокнот<br>
+       3. Сохрани как <code>fix-icons.cmd</code><br>
+       4. Запусти от имени администратора</p>
+  </div>
+</div>
+
 
 
 
