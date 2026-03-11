@@ -798,3 +798,89 @@ a:hover{
   color: #9fc2ff;
   letter-spacing: .2px;
 }
+
+.cmd-box {
+  background: #000;
+  color: #cfcfcf;
+  font-family: Consolas, monospace;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+  font-size: 15px;
+  white-space: pre;
+  border: 1px solid #1a1a1a;
+}
+
+.cmd-window {
+  width: 100%;
+  max-width: 720px;
+  background: #0c0c0c;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  margin: 14px 0;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.cmd-titlebar {
+  background: linear-gradient(#2b2b2b, #1f1f1f);
+  color: #dcdcdc;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+.cmd-icon {
+  background: #111;
+  color: #cfcfcf;
+  padding: 2px 6px;
+  margin-right: 8px;
+  border-radius: 3px;
+  font-family: Consolas, monospace;
+  font-size: 12px;
+}
+
+.cmd-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmd-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.cmd-buttons span {
+  width: 10px;
+  height: 10px;
+  background: #3a3a3a;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.cmd-body {
+  padding: 18px;
+  color: #e6e6e6;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* Мигающий курсор */
+.cursor {
+  display: inline-block;
+  width: 9px;
+  height: 16px;
+  background: #e6e6e6;
+  margin-left: 3px;
+  animation: blink 1s steps(1) infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
