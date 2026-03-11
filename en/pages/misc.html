@@ -339,6 +339,60 @@ start "" explorer.exe
 </div>
 
 
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Enable NumLock by default at Windows 11 startup</div>
+        <div class="download-short">Automatically turn on the numeric keypad</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>To make NumLock turn on automatically when Windows starts:</p>
+
+    <p><strong>Step 1.</strong> Press <code>Win + R</code>, type <code>regedit</code>, and press <code>Enter</code>.</p>
+
+    <p><strong>Step 2.</strong> Go to the registry key:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockPathEn">HKEY_USERS\.DEFAULT\Control Panel\Keyboard</span>
+      <button class="copybtn" data-copy-target="numLockPathEn" aria-label="Copy path"></button>
+    </div>
+
+    <p><strong>Step 3.</strong> Find the parameter:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockParamEn">InitialKeyboardIndicators</span>
+      <button class="copybtn" data-copy-target="numLockParamEn" aria-label="Copy name"></button>
+    </div>
+
+    <p><strong>Step 4.</strong> Set value to <strong>"2"</strong></p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockValueEn">0 - NumLock disabled<br>
+      2 - NumLock enabled after user logon<br>
+      80000000 - NumLock enabled only on the sign-in screen<br>
+      80000002 - NumLock enabled both on the sign-in screen and after logon
+      </span>
+      <button class="copybtn" data-copy-target="numLockValueEn" aria-label="Copy values"></button>
+    </div>
+
+    <p><strong>Step 5.</strong> Restart your computer.</p>
+
+    <p><strong>If it does not work:</strong> change the same parameter in:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockAltPathEn">HKEY_CURRENT_USER\Control Panel\Keyboard</span>
+      <button class="copybtn" data-copy-target="numLockAltPathEn" aria-label="Copy path"></button>
+    </div>
+  </div>
+</div>
+
+
+
 
 
       </div>

@@ -347,6 +347,60 @@ start "" explorer.exe
   </div>
 </div>
 
+<div class="download-item">
+  <button class="download-toggle" type="button">
+    <div class="download-head">
+      <div class="download-meta">
+        <div class="download-title">Включить NumLock по умолчанию при загрузке Windows 11</div>
+        <div class="download-short">Автоматическое включение цифрового блока клавиатуры</div>
+      </div>
+    </div>
+    <span class="download-arrow">+</span>
+  </button>
+
+  <div class="download-panel">
+    <p>Чтобы NumLock включался автоматически при старте Windows:</p>
+
+    <p><strong>Шаг 1.</strong> Нажми <code>Win + R</code>, введи <code>regedit</code> и нажми <code>Enter</code>.</p>
+
+    <p><strong>Шаг 2.</strong> Перейди в раздел реестра:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockPathRU">HKEY_USERS\.DEFAULT\Control Panel\Keyboard</span>
+      <button class="copybtn" data-copy-target="numLockPathRU" aria-label="Копировать путь"></button>
+    </div>
+
+    <p><strong>Шаг 3.</strong> Найди параметр:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockParamRU">InitialKeyboardIndicators</span>
+      <button class="copybtn" data-copy-target="numLockParamRU" aria-label="Копировать имя"></button>
+    </div>
+
+    <p><strong>Шаг 4.</strong> Установи значение - "2"</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockValueRU">0 - NumLock выключен<br>
+      2 - NumLock включён после входа пользователя<br>
+      80000000 - NumLock включён только на экране входа<br>
+      80000002 - NumLock включён и на экране входа, и после входа в систему
+      
+      </span>
+      <button class="copybtn" data-copy-target="numLockValueRU" aria-label="Копировать значение"></button>
+    </div>
+
+    <p><strong>Шаг 5.</strong> Перезагрузи компьютер.</p>
+
+    <p><strong>Если не сработало:</strong> измени тот же параметр в разделе:</p>
+
+    <div class="copyline">
+      <span class="copytext" id="numLockAltPathRU">HKEY_CURRENT_USER\Control Panel\Keyboard</span>
+      <button class="copybtn" data-copy-target="numLockAltPathRU" aria-label="Копировать путь"></button>
+    </div>
+  </div>
+</div>
+
+
 
 
 
