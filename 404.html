@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+
+  <style>
+    :root {
+      --bg-color: #010005;
+      --text-color: #eaf3ff;
+      --muted-color: #9db3cc;
+      --button-bg: rgba(255,255,255,0.08);
+      --button-border: rgba(255,255,255,0.16);
+      --button-hover: rgba(255,255,255,0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--bg-color);
+      background-image: url("img/404.webp");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 1100px auto;
+      color: var(--text-color);
+    }
+
+    /* Свет от лампы рыбы */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 54% 43%,
+          rgba(180, 220, 255, 0.55) 0,
+          rgba(180, 220, 255, 0.32) 34px,
+          rgba(180, 220, 255, 0.14) 78px,
+          rgba(180, 220, 255, 0.05) 125px,
+          rgba(180, 220, 255, 0.015) 170px,
+          transparent 220px);
+      animation: lureGlow 3.8s ease-in-out infinite;
+    }
+    /* Мягкая подсветка на цифры 404 */
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 42% 42%,
+          rgba(255, 214, 120, 0.10) 0,
+          rgba(120, 180, 255, 0.06) 120px,
+          rgba(80, 120, 220, 0.03) 220px,
+          transparent 340px);
+      animation: numberGlow 5.5s ease-in-out infinite;
+    }
+
+    @keyframes lureGlow {
+      0%, 100% {
+        opacity: 0.75;
+        transform: scale(0.95);
+      }
+      50% {
+        opacity: 1.05;
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes numberGlow {
+      0%, 100% {
+        opacity: 0.55;
+      }
+      50% {
+        opacity: 0.82;
+      }
+    }
+
+    .page-404 {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px 56px;
+    }
+
+    .content {
+      max-width: 680px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+    }
+
+    p {
+      margin: 0 0 22px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: var(--muted-color);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+    }
+
+    .home-button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .home-button:hover {
+      background: var(--button-hover);
+      border-color: rgba(255,255,255,0.24);
+      transform: translateY(-1px);
+    }
+
+    .home-button:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        background-size: 1000px auto;
+        background-position: center 42%;
+      }
+
+      /* Подстройка света на планшете */
+      body::before {
+        background:
+          radial-gradient(circle at 70% 38%,
+            rgba(255, 214, 120, 0.18) 0,
+            rgba(255, 214, 120, 0.10) 50px,
+            rgba(255, 214, 120, 0.04) 100px,
+            transparent 190px);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at 40% 40%,
+            rgba(255, 214, 120, 0.08) 0,
+            rgba(120, 180, 255, 0.05) 100px,
+            transparent 260px);
+      }
+
+      .page-404 {
+        padding-bottom: 42px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background-size: 135vw auto;
+        background-position: center 35%;
+      }
+
+      body::before {
+        background:
+          radial-gradient(circle at 72% 34%,
+            rgba(255, 214, 120, 0.16) 0,
+            rgba(255, 214, 120, 0.09) 42px,
+            rgba(255, 214, 120, 0.03) 90px,
+            transparent 150px);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at 38% 36%,
+            rgba(255, 214, 120, 0.07) 0,
+            rgba(120, 180, 255, 0.04) 80px,
+            transparent 200px);
+      }
+
+      .page-404 {
+        padding: 20px 16px 28px;
+      }
+
+      .content {
+        max-width: 100%;
+      }
+
+      p {
+        margin-bottom: 18px;
+      }
+
+      .home-button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-404">
+    <div class="content">
+      <h1>Page not found</h1>
+      <p>The page you are looking for may have been moved, removed, or never existed.</p>
+      <a class="home-button" href="/">Back to Homepage</a>
+    </div>
+  </main>
+</body>
+</html>
