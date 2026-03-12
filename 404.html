@@ -10,9 +10,7 @@
       --bg-color: #010005;
       --text-color: #eaf3ff;
       --muted-color: #9db3cc;
-      --button-bg: rgba(255,255,255,0.08);
-      --button-border: rgba(255,255,255,0.16);
-      --button-hover: rgba(255,255,255,0.14);
+      --button-text: #f3f8ff;
     }
 
     * {
@@ -27,55 +25,77 @@
 
     body {
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       font-family: Arial, Helvetica, sans-serif;
       background-color: var(--bg-color);
-      background-image: url("img/404.webp");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 1100px auto;
       color: var(--text-color);
     }
 
-    /* Свет от лампы рыбы */
-    body::before {
-      content: "";
+    .hero-404 {
       position: absolute;
-      inset: 0;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92vw);
+      aspect-ratio: 16 / 9;
       pointer-events: none;
-      background:
-        radial-gradient(circle at 54% 43%,
-          rgba(180, 220, 255, 0.55) 0,
-          rgba(180, 220, 255, 0.32) 34px,
-          rgba(180, 220, 255, 0.14) 78px,
-          rgba(180, 220, 255, 0.05) 125px,
-          rgba(180, 220, 255, 0.015) 170px,
-          transparent 220px);
-      animation: lureGlow 3.8s ease-in-out infinite;
+      z-index: 0;
     }
-    /* Мягкая подсветка на цифры 404 */
-    body::after {
-      content: "";
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lure-glow,
+    .number-glow {
       position: absolute;
       inset: 0;
       pointer-events: none;
+    }
+
+    /* Свечение лампы рыбы — привязано к картинке */
+    .lure-glow {
+      background:
+        radial-gradient(circle at 57% 38%,
+        rgba(255, 255, 255, 1) 0,
+        rgba(235, 245, 255, 1) 0.7%,
+        rgba(200, 230, 255, 0.95) 2%,
+        rgba(180, 220, 255, 0.55) 5%,
+        rgba(180, 220, 255, 0.25) 9%,
+        rgba(180, 220, 255, 0.08) 14%,
+          transparent 22%);
+      animation: lureGlow 2.5s ease-in-out infinite;
+      filter: brightness(1.15);
+    }
+
+    /* Мягкая подсветка цифр 404 */
+    .number-glow {
       background:
         radial-gradient(circle at 42% 42%,
-          rgba(255, 214, 120, 0.10) 0,
-          rgba(120, 180, 255, 0.06) 120px,
-          rgba(80, 120, 220, 0.03) 220px,
-          transparent 340px);
+          rgba(180, 220, 255, 0.14) 0,
+          rgba(120, 180, 255, 0.07) 8%,
+          rgba(80, 120, 220, 0.03) 16%,
+          transparent 25%);
       animation: numberGlow 5.5s ease-in-out infinite;
     }
 
     @keyframes lureGlow {
-      0%, 100% {
-        opacity: 0.75;
-        transform: scale(0.95);
+      0% {
+        opacity: 0;
       }
-      50% {
-        opacity: 1.05;
-        transform: scale(1.12);
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
       }
     }
 
@@ -84,7 +104,7 @@
         opacity: 0.55;
       }
       50% {
-        opacity: 0.82;
+        opacity: 0.84;
       }
     }
 
@@ -125,15 +145,12 @@
       display: inline-block;
       padding: 14px 26px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.15);
-
+      border: 1px solid rgba(180, 220, 255, 0.20);
       background: rgba(255,255,255,0.06);
-      color: var(--text-color);
-
+      color: var(--button-text);
       text-decoration: none;
       font-size: 16px;
       font-weight: 600;
-
       transition:
         background 0.3s ease,
         transform 0.2s ease,
@@ -144,84 +161,47 @@
     .home-button:hover {
       background: rgba(180, 220, 255, 0.15);
       border-color: rgba(180, 220, 255, 0.45);
-
       box-shadow:
         0 0 12px rgba(180, 220, 255, 0.35),
         0 0 28px rgba(180, 220, 255, 0.15);
-
       transform: translateY(-2px);
     }
 
     .home-button:active {
       transform: translateY(0);
-
+      background: rgba(180, 220, 255, 0.22);
       box-shadow:
         0 0 8px rgba(180, 220, 255, 0.35),
         inset 0 0 12px rgba(180, 220, 255, 0.25);
-
-      background: rgba(180, 220, 255, 0.22);
     }
+
 
     @media (max-width: 900px) {
-      body {
-        background-size: 1000px auto;
-        background-position: center 42%;
-      }
-
-      /* Подстройка света на планшете */
-      body::before {
-        background:
-          radial-gradient(circle at 55% 41%,
-            rgba(180, 220, 255, 0.55) 0,
-            rgba(180, 220, 255, 0.32) 34px,
-            rgba(180, 220, 255, 0.14) 78px,
-            rgba(180, 220, 255, 0.05) 125px,
-            rgba(180, 220, 255, 0.015) 170px,
-            transparent 220px);
-        filter: brightness(1.1);
-      }
-
-      body::after {
-        background:
-          radial-gradient(circle at 40% 40%,
-            rgba(255, 214, 120, 0.08) 0,
-            rgba(120, 180, 255, 0.05) 100px,
-            transparent 260px);
+      .hero-404 {
+        top: 36px;
+        width: min(1000px, 96vw);
       }
 
       .page-404 {
-        padding-bottom: 42px;
+        min-height: 100svh;
+        padding: 34px 20px 42px;
       }
     }
 
+
+
     @media (max-width: 600px) {
-      body {
-        background-size: 135vw auto;
-        background-position: center 35%;
-      }
-
-      body::before {
-        background:
-          radial-gradient(circle at 56% 40%,
-            rgba(180, 220, 255, 0.55) 0,
-            rgba(180, 220, 255, 0.32) 34px,
-            rgba(180, 220, 255, 0.14) 78px,
-            rgba(180, 220, 255, 0.05) 125px,
-            rgba(180, 220, 255, 0.015) 170px,
-            transparent 220px);
-        filter: brightness(1.1);
-      }
-
-      body::after {
-        background:
-          radial-gradient(circle at 38% 36%,
-            rgba(255, 214, 120, 0.07) 0,
-            rgba(120, 180, 255, 0.04) 80px,
-            transparent 200px);
+      .hero-404 {
+        top: 12px;
+        width: 122vw;
+        max-width: none;
       }
 
       .page-404 {
-        padding: 20px 16px 28px;
+        min-height: 100svh;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 74vw 16px calc(28px + env(safe-area-inset-bottom));
       }
 
       .content {
@@ -238,9 +218,17 @@
         max-width: 280px;
       }
     }
+
+
   </style>
 </head>
 <body>
+  <div class="hero-404">
+    <img src="/img/404.webp" alt="404 underwater illustration" class="hero-image">
+    <div class="lure-glow"></div>
+    <div class="number-glow"></div>
+  </div>
+
   <main class="page-404">
     <div class="content">
       <h1>Page not found</h1>
