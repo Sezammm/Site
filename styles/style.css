@@ -960,3 +960,9 @@ a:hover{
     height: 23px;
   }
 }
+
+/* Print-test page link */
+.print-test-link a {
+  text-decoration: none;
+  font-weight: 600;
+}

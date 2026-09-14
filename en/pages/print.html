@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Print-test page</title>
+
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=GlxJ4YTAF0DlTaHx-9rQsH31nLO1jVmWL37DxlXL6jnkwreww5wasajxnesWBCwS6_Io_U0fBZ9WDryyKZIsvEsjMJH2Mrd9nIeW86VkODCCvyTHQr5cfNc6ov3DDUWyQpfT1tdhsUo6AFJBwTMAn7q_nxascsTUVEyr9B4VbddJXehyRpqKQr2lNLDSIftOiCuec_S-P0-OYuSB5Xai9Mqui4rvfyVt8_2nUuhE4RtOFbmJ0HBAcxip2bXNPuaWCl4BexwEQrtmrIwBiQOlc6yT66p84roq0Byzj8-jYgTkPxKJOCyozMEU1UPpm37j" charset="UTF-8"></script><style>
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #ffffff;
+      color: #111111;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .print-page {
+      width: 100%;
+      max-width: 182mm;
+      min-height: 267mm;
+      margin: 0 auto;
+      padding: 8mm 0;
+      background: #ffffff;
+    }
+
+    .color-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 7mm;
+      margin: 12mm 0 18mm;
+    }
+
+    .color-line {
+      width: 100%;
+      height: 0.7mm;
+      border: 0;
+    }
+
+    .red {
+      background: #e53935;
+    }
+
+    .green {
+      background: #43a047;
+    }
+
+    .blue {
+      background: #1e88e5;
+    }
+
+    .yellow {
+      background: #fdd835;
+    }
+
+    .black {
+      background: #222222;
+    }
+
+    .test-text {
+      margin-top: 14mm;
+      line-height: 1.65;
+    }
+
+    .test-text p {
+      margin: 0 0 9mm;
+    }
+
+    .line-one {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16pt;
+    }
+
+    .line-two {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15pt;
+    }
+
+    .line-three {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13pt;
+    }
+
+    .footer-note {
+      margin-top: 24mm;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      color: #555555;
+    }
+
+    @media screen {
+      body {
+        padding: 20px;
+        background: #eeeeee;
+      }
+
+      .print-page {
+        padding: 20mm;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    @media print {
+      .print-page {
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="print-page">
+    <section class="color-lines" aria-label="Color printer test lines">
+      <div class="color-line red"></div>
+      <div class="color-line green"></div>
+      <div class="color-line blue"></div>
+      <div class="color-line yellow"></div>
+      <div class="color-line black"></div>
+    </section>
+
+    <section class="test-text" aria-label="Font test">
+      <p class="line-one">This is a simple color and print quality test.</p>
+      <p class="line-two">The quick brown fox jumps over the lazy dog.</p>
+      <p class="line-three">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</p>
+    </section>
+
+    <p class="footer-note">Print-test page · Please check colors, sharpness, and alignment.</p>
+  </main>
+</body>
+</html>

@@ -29,4 +29,4 @@ git ls-files |
     "`n===== $_ =====`n"
     Get-Content -LiteralPath $_ -Raw -Encoding UTF8
   } |
-  Set-Content -Encoding UTF8 RTT-site-domains.txt
+  Set-Content -Encoding UTF8 RTT-szam.ru-site.txt
