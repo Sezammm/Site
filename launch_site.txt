@@ -3,21 +3,25 @@ in PowerShell:
 cd E:\Site\szam.ru
 python -m http.server 8000
 
-============================
+========================================================
 Open:
 http://localhost:8000
-============================
+========================================================
 
 cd E:\Site\szam.ru
 
-============================
+========================================================
 
-----------------------
+git add -A
+git commit -m "Cosmetic change ver.21"
+git push
+
+--------------------------------------------------------
 # Repository Structure
-----------------------
+--------------------------------------------------------
 Команда для VSCode для Windows (аналог tree):
 tree /F /A
-----------------------
+--------------------------------------------------------
 
 
 git ls-files |
@@ -29,4 +33,4 @@ git ls-files |
     "`n===== $_ =====`n"
     Get-Content -LiteralPath $_ -Raw -Encoding UTF8
   } |
-  Set-Content -Encoding UTF8 RTT-szam.ru-site.txt
+  Set-Content -Encoding UTF8 RTT-szam.ru.txt

@@ -7,8 +7,8 @@
 
   <style>
     @page {
-      size: A4;
-      margin: 14mm;
+      size: auto;
+      margin: 10mm;
     }
 
     * {
@@ -113,12 +113,53 @@
       }
     }
 
+
+
+
+
     @media print {
+      html,
+      body {
+        width: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+      }
+
       .print-page {
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+        margin: 0;
         padding: 0;
         box-shadow: none;
       }
+
+      .color-lines {
+        gap: 5mm;
+        margin: 8mm 0 12mm;
+      }
+
+      .test-text {
+        margin-top: 8mm;
+        line-height: 1.4;
+      }
+
+      .test-text p {
+        margin-bottom: 6mm;
+      }
+
+      .footer-note {
+        margin-top: 12mm;
+      }
+
+      .color-line {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
     }
+
   </style>
 </head>
 
